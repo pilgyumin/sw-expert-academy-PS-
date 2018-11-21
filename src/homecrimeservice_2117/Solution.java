@@ -13,12 +13,6 @@ public class Solution {
 			this.x = x;
 			this.y = y;
 		}
-
-		@Override
-		public String toString() {
-			return "Node [x=" + x + ", y=" + y + "]";
-		}
-
 	}
 
 	private static int n;
@@ -42,7 +36,6 @@ public class Solution {
 					}
 					if (map[x][y] == 1) {
 						count++;
-//						System.out.println(x + " " + y);
 					}
 				}
 
@@ -51,8 +44,6 @@ public class Solution {
 						ans = count;
 					}
 				}
-//				System.out.println("*********************");
-
 			}
 		}
 	}
@@ -66,8 +57,6 @@ public class Solution {
 			map = new int[n][n];
 			house = 0;
 			ans = 0;
-			
-			
 			for (int j = 0; j < n; j++) {
 				for (int k = 0; k < n; k++) {
 					map[j][k] = sc.nextInt();
@@ -76,11 +65,11 @@ public class Solution {
 					}
 				}
 			}
-			int z = 2;
-			while (house * m >= (z * z) + ((z - 1) * (z - 1))) {
+			int num = 1;
+			while (house * m >= (num * num) + ((num - 1) * (num - 1))) {
 				ar = new ArrayList<Node>();
-				for (int j = 0; j < z ; j++) {
-					for (int k = z - j - 1 ; k > -(z - j); k--) {
+				for (int j = 0; j < num ; j++) {
+					for (int k = num - j - 1 ; k > -(num - j); k--) {
 						if (j == 0) {
 							Node no = new Node(j, k);
 							ar.add(no);
@@ -92,21 +81,10 @@ public class Solution {
 						}
 					}
 				}
-//				for (int v = 0; v < ar.size(); v++) {
-//					System.out.println(ar.get(v));
-//				}
 				operate = ar.size();
-//				System.out.println(z + "-------------");
 				find();
-//				break;
-//				System.out.println(ans);
-//				System.out.println("---------------------");
-				z++;
+				num++;
 			}
-//			System.out.println(house * m);
-//			System.out.println((z * z) + ((z - 1) * (z - 1)));
-//			System.out.println(z);
-//			System.out.println(ar.size());
 			System.out.printf("#%d %d\n", i, ans);
 		}
 	}
