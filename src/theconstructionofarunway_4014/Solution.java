@@ -16,16 +16,13 @@ public class Solution {
 			runway[i][j] = true;
 			return true;
 		}
-		
 		if(j - 1 >= 0 && slope1[i][j-1] == 11 && !runway[i][j-1]) {
 			return false;
 		}
-		
 		if(j - 1 >= 0 && slope1[i][j-1] == 10 && !runway[i][j-1]) {
 			runway[i][j] = moveLeft(i,j-1,cnt+1);
 			return runway[i][j];
 		}
-		
 		return false;
 	}
 	
@@ -34,16 +31,13 @@ public class Solution {
 			runway[i][j] = true;
 			return true;
 		}
-		
 		if(j <= n -2 &&(slope1[i][j] == 12 ) && !runway[i][j+1]) {
 			return false;
 		}
-		
 		if(j <= n -2 &&( slope1[i][j] == 10 ) && !runway[i][j+1]) {
 			runway[i][j] = moveRight(i,j+1,cnt+1);
 			return runway[i][j];
 		}
-		
 		return false;
 	}
 	
@@ -52,16 +46,13 @@ public class Solution {
 			runway[i][j] = true;
 			return true;
 		}
-		
 		if(i <= n - 2 &&(slope2[i][j] == 12 )&& !runway[i+1][j]) {
 			return false;
 		}
-		
 		if(i <= n - 2 &&( slope2[i][j] == 10  )&& !runway[i+1][j]) {
 			runway[i][j] = moveDown(i+1,j,cnt+1);
 			return runway[i][j];
 		}
-		
 		return false;
 	}
 	
@@ -70,16 +61,13 @@ public class Solution {
 			runway[i][j] = true;
 			return true;
 		}
-		
 		if(i - 1 >= 0 && ( slope2[i-1][j] == 11 ) && !runway[i-1][j]) {
 			return false;
 		}
-		
 		if(i - 1 >= 0 && ( slope2[i-1][j] == 10) && !runway[i-1][j]) {
 			runway[i][j] = moveUp(i-1,j,cnt+1);
 			return runway[i][j];
 		}
-		
 		return false;
 	}
 
@@ -155,13 +143,13 @@ public class Solution {
 						break;
 					}
 				}
-//				System.out.println(check);
 				if(check) {
 					count++;
 				}
 			}
-			System.out.println();
+			
 			runway = new boolean[n][n];
+			
 			for(int j = 0; j < n; j++) {
 				boolean check = true;
 				for(int k = 0; k < n-1; k++) {
@@ -182,30 +170,12 @@ public class Solution {
 						break;
 					}
 				}
-//				System.out.println(check);
 				if(check) {
 					count++;
 				}
 			}
 			
 			System.out.printf("#%d %d\n",i,count);
-			
-//			for(int j = 0; j < n-1; j++) {
-//				for(int k = 0; k < n; k++) {
-//					System.out.print(slope2[j][k] + " ");
-//				}
-//				System.out.println();
-//			}
-//			System.out.println();
-//			for(int j = 0; j < n; j++) {
-//				for(int k = 0; k < n-1; k++) {
-//					System.out.print(slope1[j][k] + " ");
-//				}
-//				System.out.println();
-//			}
-			
 		}
-
 	}
-
 }
