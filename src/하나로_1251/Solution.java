@@ -79,6 +79,7 @@ public class Solution {
 					b1 = b1.add(b2);
 					Node no = new Node(j,k,b1);
 					ar[index++] = no;
+					System.out.println(no.hashCode());
 				}
 			}
 			Arrays.sort(ar);
