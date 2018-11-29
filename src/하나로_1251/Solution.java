@@ -13,7 +13,6 @@ public class Solution {
 		BigDecimal dist;
 		
 		public Node(int p, int s, BigDecimal dist) {
-			super();
 			this.p = p;
 			this.s = s;
 			this.dist = dist;
