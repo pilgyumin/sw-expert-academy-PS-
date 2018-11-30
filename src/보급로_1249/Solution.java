@@ -39,6 +39,7 @@ public class Solution {
                         qu.add(nw);
                     }
                 }
+                
                 else if(j == 1) {
                     if(no.x  < n - 1 && dist[no.x+1][no.y] > map[no.x+1][no.y] + dist[no.x][no.y]) {
                         dist[no.x+1][no.y] = map[no.x+1][no.y] + dist[no.x][no.y];
@@ -46,6 +47,7 @@ public class Solution {
                         qu.add(nw);     
                     }
                 }
+                
                 else if(j == 2) {
                     if(no.y < n - 1 && dist[no.x][no.y+1] > map[no.x][no.y+1] + dist[no.x][no.y]) {
                         dist[no.x][no.y+1] = map[no.x][no.y+1] + dist[no.x][no.y];
@@ -53,6 +55,7 @@ public class Solution {
                         qu.add(nw);
                     }
                 }
+                
                 else if(j == 3) {
                     if(no.y >= 1 && dist[no.x][no.y-1] > map[no.x][no.y-1] + dist[no.x][no.y]) {
                         dist[no.x][no.y-1] = map[no.x][no.y-1] + dist[no.x][no.y];
