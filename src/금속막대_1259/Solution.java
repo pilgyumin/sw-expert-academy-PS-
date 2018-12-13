@@ -18,9 +18,7 @@ public class Solution {
 		public String toString() {
 			return front + " " + back;
 		}
-		
-		
-		 
+  
 	}
 
 	public static void main(String[] args) {
