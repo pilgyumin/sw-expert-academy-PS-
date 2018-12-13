@@ -7,7 +7,7 @@ public class Solution {
 	
 	static class Screw{
 		int front;
-		int back;
+		int back;  
 		
 		public Screw(int front, int back) {
 			this.front = front;
@@ -20,7 +20,7 @@ public class Solution {
 		}
 		
 		
-		
+		 
 	}
 
 	public static void main(String[] args) {
