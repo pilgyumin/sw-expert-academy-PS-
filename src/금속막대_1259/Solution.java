@@ -15,10 +15,10 @@ public class Solution {
 		}
 
 		@Override
-		public String toString() {
+		public String toString() { 
 			return front + " " + back;
 		}
-  
+    
 	}
 
 	public static void main(String[] args) {
