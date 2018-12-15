@@ -144,7 +144,7 @@ public class Solution {
 							min = ar.get(k).w * ar.get(k).h * ar.get(k + 1).h;
 							index = k;
 						}
-					}System.out.println(min);
+					}
 					sum += min;
 					Node no = new Node(ar.get(index).w, ar.get(index + 1).h);
 					ar.add(index, no);
