@@ -1,6 +1,7 @@
 package 금속막대_1259;
 
-import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Solution {
@@ -26,81 +27,33 @@ public class Solution {
 		int test = sc.nextInt();
 		for (int i = 1; i <= test; i++) {
 			int num = sc.nextInt();
-			int f = 0;
-			int b = 0;
-			ArrayList<Screw> ar = new ArrayList<Screw>();
-			ArrayList<Screw> arr = new ArrayList<Screw>();
+			LinkedList<Screw> ar = new LinkedList<Screw>();
+			Deque<Screw> dq = new LinkedList<Screw>();
 			for (int j = 0; j < num; j++) {
 				int a = sc.nextInt();
 				int x = sc.nextInt();
 				ar.add(new Screw(a, x));
-				if (a > f) {
-					f = a;
-				}
-				if (x > b) {
-					b = x;
-				}
 			}
-			int[] countf = new int[f + 1];
-			int[] countb = new int[b + 1];
-			for (int j = 0; j < num; j++) {
-				countf[ar.get(j).front]++;
-				countb[ar.get(j).back]++;
-			}
-			boolean check = false;
-			if (countf.length > countb.length) {
-				for (int j = 0; j < countb.length; j++) {
-					if (countf[j] == countb[j]) {
-						int size = ar.size();
-						if (!check) {
-							for (int z = 0; z < ar.size(); z++) {
-								if (ar.get(z).back == j) {
-									arr.add(ar.get(z));
-									ar.remove(z);
-									check = true;
-								}
-							}
-						} 
-						if(check) {
-							for (int z = 0; z < ar.size(); z++) {
-								if (ar.get(z).front == j) {
-									arr.add(ar.get(z));
-									ar.remove(z);
-								}
-							}
-						}
-
+			dq.add(ar.get(0));
+			ar.remove(0);
+			while(ar.size() > 0) {
+				for(int z = 0; z < ar.size()+1; z++) {
+					if(dq.peekFirst().front == ar.get(z).back) {
+						dq.addFirst(ar.get(z));
+						ar.remove(z);
+						break;
 					}
-				}
-			} 
-			else {
-				for (int j = 0; j < countf.length; j++) {
-					if (countf[j] == countb[j]) {
-						int size = ar.size();
-						if (!check) {
-							for (int z = 0; z < ar.size(); z++) {
-								if (ar.get(z).back == j) {
-									arr.add(ar.get(z));
-									ar.remove(z);
-									check = true;
-								}
-							}
-						} 
-						if(check) {
-							for (int z = 0; z < ar.size(); z++) {
-								if (ar.get(z).front == j) {
-									arr.add(ar.get(z));
-									ar.remove(z);
-								}
-							}
-						}
-
+					if(dq.peekLast().back == ar.get(z).front) {
+						dq.addLast(ar.get(z));
+						ar.remove(z);
+						break;
 					}
 				}
 			}
 			System.out.printf("#%d ", i);
-			for (int j = 0; j < arr.size(); j++) {
-				System.out.print(arr.get(j).toString() + " ");
+			int size = dq.size();
+			for (int j = 0; j < size; j++) {
+				System.out.print(dq.poll().toString() + " ");
 			}
 			System.out.println();
 		}
