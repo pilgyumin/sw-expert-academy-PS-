@@ -138,23 +138,21 @@ public class Solution {
 				for(int j = 0; j < dist.length; j++) {
 					System.out.println(dist[j]);
 				}
-
-				int[][] mapAr = new int[dist.length+2][dist.length+2];
-				for(int d = 0; d < dist.length; d++) {
-					for(int j = 1; j <= dist.length-d; j++) {
-						int k = j + d;
-						if(j == k) {
-							continue;
-						}
-						mapAr[j][k] = Integer.MAX_VALUE;
-						for(int p = j; p <= k-1; p++) {
-							mapAr[j][k] = Math.min(mapAr[j][k], mapAr[j][p] + mapAr[p+1][k] + (dist[j-1] * dist[p] * dist[k]));
-							System.out.println(mapAr[j][k] + " " + dist[j-1] + " " + dist[p] + " " + dist[k]);
-						}
-					}
-				}
-				for(int k = 0; k < dist.length+2; k++) {
-					for(int m = 0; m < dist.length+2; m++) {
+				int[][] mapAr = new int[dist.length+5][dist.length+5];
+				for (int diagonal = 2; diagonal <= dist.length; diagonal++)
+			    {
+			        for (int p = 1; p <= dist.length - diagonal; p++)
+			        {
+			            int j = p + diagonal -1;
+			            mapAr[p][j] = Integer.MAX_VALUE;
+			            for (int k = p; k < j ; k++)
+			                mapAr[p][j] = Math.min(mapAr[p][j], mapAr[p][k] + mapAr[k + 1][j] + dist[i - 1] * dist[k] * dist[j]);
+			 
+			        }
+			    }
+				
+				for(int k = 0; k < dist.length+1; k++) {
+					for(int m = 1; m < dist.length+1; m++) {
 						System.out.print(mapAr[k][m] + " ");
 					}
 					System.out.println();
