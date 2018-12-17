@@ -128,36 +128,41 @@ public class Solution {
 				}
 				int size = dq.size();
 				for (int j = 0; j < size; j++) {
-
 					ar.add(dq.poll());
 				}
-				for (int j = 0; j < size; j++) {
-					System.out.println(ar.get(j));
+				int[] dist = new int[ar.size()+1];
+				for (int j = 0; j < ar.size(); j++) {
+					dist[j] = ar.get(j).w;
+					dist[j+1] = ar.get(j).h;
 				}
-				int sum = 0;
-				while (ar.size() > 1) {
-					int sizear = ar.size();
-					int min = Integer.MAX_VALUE;
-					int index = -1;
-					for (int k = 0; k < sizear - 1; k++) {
-						if (min > ar.get(k).w * ar.get(k).h * ar.get(k + 1).h) {
-							min = ar.get(k).w * ar.get(k).h * ar.get(k + 1).h;
-							index = k;
+				for(int j = 0; j < dist.length; j++) {
+					System.out.println(dist[j]);
+				}
+
+				int[][] mapAr = new int[dist.length+2][dist.length+2];
+				for(int d = 0; d < dist.length; d++) {
+					for(int j = 1; j <= dist.length-d; j++) {
+						int k = j + d;
+						if(j == k) {
+							continue;
+						}
+						mapAr[j][k] = Integer.MAX_VALUE;
+						for(int p = j; p <= k-1; p++) {
+							mapAr[j][k] = Math.min(mapAr[j][k], mapAr[j][p] + mapAr[p+1][k] + (dist[j-1] * dist[p] * dist[k]));
+							System.out.println(mapAr[j][k] + " " + dist[j-1] + " " + dist[p] + " " + dist[k]);
 						}
 					}
-					sum += min;
-					Node no = new Node(ar.get(index).w, ar.get(index + 1).h);
-					ar.add(index, no);
-					ar.remove(index + 1);
-					ar.remove(index + 1);
 				}
-				System.out.println(ar.size());
+				for(int k = 0; k < dist.length+2; k++) {
+					for(int m = 0; m < dist.length+2; m++) {
+						System.out.print(mapAr[k][m] + " ");
+					}
+					System.out.println();
+				}
+				System.out.println(mapAr[0][dist.length-1]);
+		
 
-				System.out.printf("#%d %d\n", i, sum);
-				// for(int j = 0; j < ar.size(); j++) {
-				// System.out.print(ar.get(j) + " ");
-				// }
-				// System.out.println();
+//				System.out.printf("#%d %d\n", i, sum);
 			}
 		} catch (NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
