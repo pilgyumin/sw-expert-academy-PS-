@@ -130,37 +130,28 @@ public class Solution {
 				for (int j = 0; j < size; j++) {
 					ar.add(dq.poll());
 				}
-				int[] dist = new int[ar.size()+1];
-				for (int j = 0; j < ar.size(); j++) {
+				size = ar.size();
+				int[] dist = new int[size+1];
+				for(int j = 0; j < dist.length - 1; j++) {
 					dist[j] = ar.get(j).w;
 					dist[j+1] = ar.get(j).h;
 				}
-				for(int j = 0; j < dist.length; j++) {
-					System.out.println(dist[j]);
-				}
-				int[][] mapAr = new int[dist.length+5][dist.length+5];
-				for (int diagonal = 2; diagonal <= dist.length; diagonal++)
-			    {
-			        for (int p = 1; p <= dist.length - diagonal; p++)
-			        {
-			            int j = p + diagonal -1;
-			            mapAr[p][j] = Integer.MAX_VALUE;
-			            for (int k = p; k < j ; k++)
-			                mapAr[p][j] = Math.min(mapAr[p][j], mapAr[p][k] + mapAr[k + 1][j] + dist[i - 1] * dist[k] * dist[j]);
-			 
-			        }
-			    }
-				
-				for(int k = 0; k < dist.length+1; k++) {
-					for(int m = 1; m < dist.length+1; m++) {
-						System.out.print(mapAr[k][m] + " ");
+				int[][] mapAr = new int[size+1][size+1];
+				for(int m = 0 ; m < size; m++) {
+					for(int p = 1; p <= size - m; p++) {				
+						int j = p + m;
+						if(j == p) {
+							continue;
+						}
+						mapAr[p][j] = Integer.MAX_VALUE;
+						for(int k = p; k < j; k++) {
+							mapAr[p][j] = Math.min(mapAr[p][j], mapAr[p][k] + 
+									mapAr[k+1][j] + (dist[p-1] * dist[k] * dist[j]));
+						}
 					}
-					System.out.println();
 				}
-				System.out.println(mapAr[0][dist.length-1]);
-		
+				System.out.printf("#%d %d\n",i,mapAr[1][size]);
 
-//				System.out.printf("#%d %d\n", i, sum);
 			}
 		} catch (NumberFormatException | IOException e) {
 			// TODO Auto-generated catch block
