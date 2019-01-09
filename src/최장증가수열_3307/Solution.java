@@ -35,7 +35,7 @@ public class Solution {
 					ar[j] = Integer.parseInt(s[j]);
 				}
 				list = new ArrayList<Integer>();
-				list.add(ar[0]);
+				list.add(ar[0]); 
 				for(int j = 1; j < num; j++) {
 					if(list.get(list.size()-1) < ar[j]) {
 						list.add(ar[j]);
