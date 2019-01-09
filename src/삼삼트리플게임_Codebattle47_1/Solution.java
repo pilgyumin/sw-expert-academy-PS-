@@ -7,44 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Solution {
-	
-	static class Card implements Comparable<Card>{
-		int num;
-		int color;// 1 : R, 2 : G, 3 : B
-		
-		public Card(int num, int color) {
-			this.num = num;
-			this.color = color;
-		}
-
-		@Override
-		public String toString() {
-			return "Card [num=" + num + ", color=" + color + "]";
-		}
-
-		@Override
-		public int compareTo(Card o) {
-			
-			if(this.color < o.color) {
-				return -1;
-			}
-			else if(this.color > o.color) {
-				return 1;
-			}
-			else {
-				if(this.num < o.num) {
-					return -1;
-				}
-				else if(this.num > o.num){
-					return 1;
-				}
-			}
-			return 0;
-		}
-	}
-	
-	private static ArrayList<Card> ar;
-
 	public static void main(String[] args) {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
@@ -52,41 +14,45 @@ public class Solution {
 			for(int i = 1; i <= test; i++) {
 				String[] n = br.readLine().split("");
 				String[] c = br.readLine().split("");
-				ar = new ArrayList<>();
+				int[][] map = new int[3][9];
 				for(int j = 0; j < 9; j++) {
 					switch(c[j]) {
 					case "R":
-						Card ca = new Card(Integer.parseInt(n[j]),1);
-						ar.add(ca);
+						map[0][Integer.parseInt(n[j]) - 1]++;
 						break;
 					case "G":
-						Card ca1 = new Card(Integer.parseInt(n[j]),2);
-						ar.add(ca1);
+						map[1][Integer.parseInt(n[j]) - 1]++;
 						break;
 					case "B":
-						Card ca2 = new Card(Integer.parseInt(n[j]),3);
-						ar.add(ca2);
+						map[2][Integer.parseInt(n[j]) - 1]++;
 						break;
 					}
 					
 				}
-				
-				Collections.sort(ar);
-				for(int j = 0; j < 9; j++) {
-					System.out.println(ar.get(j));
-				}
-
 				int count = 0;
-				
-				for(int j = 0; j < 9; j+=3) {
-					if(ar.get(j).color == ar.get(j+1).color && ar.get(j+1).color == ar.get(j+2).color) {
-						if(ar.get(j).num + 1 == ar.get(j+1).num && ar.get(j+1).num + 1 == ar.get(j+2).num) {
-							count++;
-						}
-						else if(ar.get(j).num == ar.get(j+1).num && ar.get(j+1).num == ar.get(j+2).num) {
-							count++;
+				xx : for(int j = 0; j < 3; j++) {
+					for(int k = 0; k < 9; k++) {
+						if(map[j][k] != 0) {
+							while(map[j][k] != 0) {
+								if(map[j][k] >= 3) {
+									map[j][k] -= 3;
+									count++;
+								}
+								else {
+									if(k < 7 && map[j][k+1] != 0
+											&& map[j][k+2] != 0) {
+										count++;
+										map[j][k]--;
+										map[j][k+1]--;
+										map[j][k+2]--;
+										continue;
+									}
+									break xx;
+								}
+							}
 						}
 					}
+					
 				}
 				if(count >= 3) {
 					System.out.printf("#%d %s\n",i,"Win");
