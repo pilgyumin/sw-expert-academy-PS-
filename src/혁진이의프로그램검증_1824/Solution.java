@@ -42,6 +42,12 @@ public class Solution {
 			y = 0;
 		}
 		
+		
+		if(comp[x][y] == mem) {
+			return true;
+		}
+		
+		comp[x][y] = mem;
 		xx: while (arrive) {
 			switch (map[x][y]) {
 			case "0":
@@ -89,72 +95,74 @@ public class Solution {
 				}
 				break;
 			case "?":
-				if(direction == 0) {
-					prevdir = 1;
-				}
-				else if(direction == 1) {
-					prevdir = 0;
-				}
-				else if(direction == 2) {
-					prevdir = 3;
-				}
-				else if(direction == 3) {
-					prevdir = 2;
+				if(prevdir == 5) {
+					if(direction == 0) {
+						prevdir = 1;
+					}
+					else if(direction == 1) {
+						prevdir = 0;
+					}
+					else if(direction == 2) {
+						prevdir = 3;
+					}
+					else if(direction == 3) {
+						prevdir = 2;
+					}
 				}
 				switch (prevdir) {
 				case 0:
-					arrive = find(mem, x - 1, y, 0,arrive,direction);
+					arrive = find(mem, x - 1, y, 0,arrive,0);
 					if(!arrive) {
 						return false;
 					}
-					arrive = find(mem, x, y - 1, 2,arrive,direction);
+					arrive = find(mem, x, y - 1, 2,arrive,2);
 					if(!arrive) {
 						return false;
 					}
-					arrive = find(mem, x, y + 1, 3,arrive,direction);
+					arrive = find(mem, x, y + 1, 3,arrive,3);
 					if(!arrive) {
 						return false;
 					}
 					break;
 					
 				case 1:
-					arrive = find(mem, x - 1, y, 1,arrive,direction);
+					arrive = find(mem, x + 1, y, 1,arrive,1);
 					if(!arrive) {
 						return false;
 					}
-					arrive = find(mem, x, y - 1, 2,arrive,direction);
+					arrive = find(mem, x, y - 1, 2,arrive,2);
 					if(!arrive) {
 						return false;
 					}
-					arrive = find(mem, x, y + 1, 3,arrive,direction);
+					arrive = find(mem, x, y + 1, 3,arrive,3);
 					if(!arrive) {
 						return false;
 					}
 					break;
 				case 2:
-					arrive = find(mem, x - 1, y, 0,arrive,direction);
+					arrive = find(mem, x - 1, y, 0,arrive,0);
 					if(!arrive) {
 						return false;
 					}
-					arrive = find(mem, x + 1, y, 1,arrive,direction);
+					arrive = find(mem, x + 1, y, 1,arrive,1);
 					if(!arrive) {
 						return false;
 					}
-					arrive = find(mem, x, y - 1, 2,arrive,direction);
+					arrive = find(mem, x, y - 1, 2,arrive,2);
 					if(!arrive) {
 						return false;
 					}
 					break;
 				case 3:
-					arrive = find(mem, x - 1, y, 0,arrive,direction);
+					arrive = find(mem, x - 1, y, 0,arrive,0);
 					if(!arrive) {
 						return false;
 					}
-					arrive = find(mem, x + 1, y, 1,arrive,direction);
+					arrive = find(mem, x + 1, y, 1,arrive,1);
 					if(!arrive) {
 						return false;
 					}
-					arrive = find(mem, x, y + 1, 3,arrive,direction);
+					arrive = find(mem, x, y + 1, 3,arrive,3);
 					if(!arrive) {
 						return false;
 					}
@@ -177,7 +185,7 @@ public class Solution {
 				mem = 0;
 			}
 			comp[x][y] = mem;
-			
+			System.out.println(x + " " + y);
 
 			x += updown[direction];
 			y += leftright[direction];
@@ -250,7 +258,7 @@ public class Solution {
 						map[j][k] = s[k];
 					}
 				}
-				if (!find(0, 0, 0, 3,arrive,2)) {
+				if (!find(0, 0, 0, 3,arrive,3)) {
 					System.out.printf("#%d %s\n", i, "YES");
 				} else {
 					System.out.printf("#%d %s\n", i, "NO");
