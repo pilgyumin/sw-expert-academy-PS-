@@ -9,45 +9,51 @@ import java.util.Random;
 public class Solution {
 
 	private static String[][] map;
-	private static int[][] comp;
 	private static int r;
 	private static int c;
 	private static boolean arrive;
-	private static boolean[] left;
-	private static boolean[] right;
-	private static boolean[] up;
-	private static boolean[] down;
+	private static boolean[][][][] check;
 	// up down left right
 	private static int[] updown = { -1, 1, 0, 0 };
 	private static int[] leftright = { 0, 0, -1, 1 };
 
-	private static boolean find(int inMem, int inX, int inY, int inDirection,boolean check
-			,int prevdi) {
-		if(!check) {
-			return false;
-		}
+	private static boolean find(int inMem, int inX, int inY, int inDirection) {
+
 		int mem = inMem;
 		int x = inX;
 		int y = inY;
+		
 		int direction = inDirection;
-		int prevdir = prevdi;
+		
+		if (mem < 0) {
+			mem = 15;
+		}
+		if (mem > 15) {
+			mem = 0;
+		}
+		
 		if (x < 0) {
 			x = r - 1;
-		} else if (x > r - 1) {
+		}
+		if (x > r - 1) {
 			x = 0;
 		}
 		if (y < 0) {
 			y = c - 1;
-		} else if (y > c - 1) {
+		}
+		if (y > c - 1) {
 			y = 0;
 		}
-		
-		
-		if(comp[x][y] == mem) {
+//		System.out.println(x + " " + y + " " + direction);
+		int xcopy = x;
+		int ycopy = y;
+
+		if(check[x][y][mem][direction]) {
 			return true;
 		}
 		
-		comp[x][y] = mem;
+		check[x][y][mem][direction] = true;
+
 		xx: while (arrive) {
 			switch (map[x][y]) {
 			case "0":
@@ -95,82 +101,26 @@ public class Solution {
 				}
 				break;
 			case "?":
-				if(prevdir == 5) {
-					if(direction == 0) {
-						prevdir = 1;
-					}
-					else if(direction == 1) {
-						prevdir = 0;
-					}
-					else if(direction == 2) {
-						prevdir = 3;
-					}
-					else if(direction == 3) {
-						prevdir = 2;
-					}
+				arrive = find(mem, x - 1, y, 0);
+				if(!arrive) {
+					return false;
 				}
-				switch (prevdir) {
-				case 0:
-					arrive = find(mem, x - 1, y, 0,arrive,0);
-					if(!arrive) {
-						return false;
-					}
-					arrive = find(mem, x, y - 1, 2,arrive,2);
-					if(!arrive) {
-						return false;
-					}
-					arrive = find(mem, x, y + 1, 3,arrive,3);
-					if(!arrive) {
-						return false;
-					}
-					break;
-					
-				case 1:
-					arrive = find(mem, x + 1, y, 1,arrive,1);
-					if(!arrive) {
-						return false;
-					}
-					arrive = find(mem, x, y - 1, 2,arrive,2);
-					if(!arrive) {
-						return false;
-					}
-					arrive = find(mem, x, y + 1, 3,arrive,3);
-					if(!arrive) {
-						return false;
-					}
-					break;
-				case 2:
-					arrive = find(mem, x - 1, y, 0,arrive,0);
-					if(!arrive) {
-						return false;
-					}
-					arrive = find(mem, x + 1, y, 1,arrive,1);
-					if(!arrive) {
-						return false;
-					}
-					arrive = find(mem, x, y - 1, 2,arrive,2);
-					if(!arrive) {
-						return false;
-					}
-					break;
-				case 3:
-					arrive = find(mem, x - 1, y, 0,arrive,0);
-					if(!arrive) {
-						return false;
-					}
-					arrive = find(mem, x + 1, y, 1,arrive,1);
-					if(!arrive) {
-						return false;
-					}
-					arrive = find(mem, x, y + 1, 3,arrive,3);
-					if(!arrive) {
-						return false;
-					}
-					break;
+				arrive = find(mem, x + 1, y, 1);
+				if(!arrive) {
+					return false;
+				}
+				arrive = find(mem, x, y - 1, 2);
+				if(!arrive) {
+					return false;
+				}
+				arrive = find(mem, x, y + 1, 3);
+				if(!arrive) {
+					return false;
 				}
 				break;
 			case "@":
 				arrive = false;
+//				System.out.println("find");
 				break;
 			case "-":
 				mem--;
@@ -179,58 +129,40 @@ public class Solution {
 				mem++;
 				break;
 			}
+			
 			if (mem < 0) {
 				mem = 15;
-			} else if (mem > 15) {
+			}
+			if (mem > 15) {
 				mem = 0;
 			}
-			comp[x][y] = mem;
-			System.out.println(x + " " + y);
-
+			
 			x += updown[direction];
 			y += leftright[direction];
-			
+//			System.out.println(x + " " + y + " " + direction);
 			if (x < 0) {
 				x = r - 1;
-			} else if (x > r - 1) {
+			} 
+			if (x > r - 1) {
 				x = 0;
 			}
 			if (y < 0) {
 				y = c - 1;
-			} else if (y > c - 1) {
+			}
+			if (y > c - 1) {
 				y = 0;
 			}
 			
-			if(comp[x][y] == mem) {
-				return true;
+			if(x == xcopy && y == ycopy) {
+				continue;
 			}
 			
-			if (x == r - 2 && y == c - 1) {
-				if (!left[mem]) {
-					left[mem] = true;
-				} else {
-					break xx;
-				}
-			} else if (x == 0 && y == c - 1) {
-				if (!right[mem]) {
-					right[mem] = true;
-				} else {
-					break xx;
-				}
-			} else if (x == r - 1 && y == c - 2) {
-				if (!up[mem]) {
-					up[mem] = true;
-				} else {
-					break xx;
-				}
-			} else if (x == r - 1 && y == 0) {
-				if (!down[mem]) {
-					down[mem] = true;
-				} else {
-					break xx;
-				}
+			if(check[x][y][mem][direction]) {
+				break xx;
 			}
 			
+			check[x][y][mem][direction] = true;
+						
 		}
 
 		return arrive;
@@ -245,20 +177,15 @@ public class Solution {
 				r = Integer.parseInt(rc[0]);
 				c = Integer.parseInt(rc[1]);
 				map = new String[r][c];
-				comp = new int[r][c];
+				check = new boolean[r][c][16][4];
 				arrive = true;
-				left = new boolean[16];
-				right = new boolean[16];
-				up = new boolean[16];
-				down = new boolean[16];
 				for (int j = 0; j < r; j++) {
 					String[] s = br.readLine().split("");
-					Arrays.fill(comp[j], -1);
 					for (int k = 0; k < c; k++) {
 						map[j][k] = s[k];
 					}
 				}
-				if (!find(0, 0, 0, 3,arrive,3)) {
+				if (!find(0, 0, 0, 3)) {
 					System.out.printf("#%d %s\n", i, "YES");
 				} else {
 					System.out.printf("#%d %s\n", i, "NO");
