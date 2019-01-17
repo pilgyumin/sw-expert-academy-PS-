@@ -3,8 +3,6 @@ package 혁진이의프로그램검증_1824;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Random;
 
 public class Solution {
 
@@ -22,7 +20,8 @@ public class Solution {
 		int mem = inMem;
 		int x = inX;
 		int y = inY;
-		
+		int xcopy = x;
+		int ycopy = y;
 		int direction = inDirection;
 		
 		if (mem < 0) {
@@ -44,9 +43,6 @@ public class Solution {
 		if (y > c - 1) {
 			y = 0;
 		}
-//		System.out.println(x + " " + y + " " + direction);
-		int xcopy = x;
-		int ycopy = y;
 
 		if(check[x][y][mem][direction]) {
 			return true;
@@ -120,7 +116,6 @@ public class Solution {
 				break;
 			case "@":
 				arrive = false;
-//				System.out.println("find");
 				break;
 			case "-":
 				mem--;
@@ -139,7 +134,7 @@ public class Solution {
 			
 			x += updown[direction];
 			y += leftright[direction];
-//			System.out.println(x + " " + y + " " + direction);
+			
 			if (x < 0) {
 				x = r - 1;
 			} 
@@ -179,15 +174,24 @@ public class Solution {
 				map = new String[r][c];
 				check = new boolean[r][c][16][4];
 				arrive = true;
+				boolean alpha = false;
 				for (int j = 0; j < r; j++) {
 					String[] s = br.readLine().split("");
 					for (int k = 0; k < c; k++) {
 						map[j][k] = s[k];
+						if(map[j][k].equals("@")) {
+							alpha = true;
+						}
 					}
 				}
-				if (!find(0, 0, 0, 3)) {
-					System.out.printf("#%d %s\n", i, "YES");
-				} else {
+				if(alpha) {
+					if (!find(0, 0, 0, 3)) {
+						System.out.printf("#%d %s\n", i, "YES");
+					} else {
+						System.out.printf("#%d %s\n", i, "NO");
+					}
+				}
+				else {
 					System.out.printf("#%d %s\n", i, "NO");
 				}
 			}
