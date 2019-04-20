@@ -5,11 +5,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class Solution {
 	
@@ -62,7 +61,7 @@ public class Solution {
 	private static ArrayList<Wormhole> wm;
 	
 	private static void playgame(int x, int y) {
-		Queue<Ball> qu = new LinkedList<>();
+		ArrayDeque<Ball> qu = new ArrayDeque<>();
 		qu.add(new Ball(x,y,0,0));
 		qu.add(new Ball(x,y,0,1));
 		qu.add(new Ball(x,y,0,2));
