@@ -1,4 +1,4 @@
-package Ȱ�ַΰǼ�_4014;
+package 활주로건설_4014;
 
 import java.util.Scanner;
 

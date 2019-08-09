@@ -1,4 +1,4 @@
-package ¹«¼±ÃæÀü_5644;
+package ë¬´ì„ ì¶©ì „_5644;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -75,7 +75,7 @@ public class Solution {
 				int count = 0;
 				int acnt = 0;
 				int bcnt = 0;
-				// 1. »ç¿ëÀÚ ÀÌµ¿
+				// 1. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 				switch (userA[r]) {
 				case 1:
 					ua.x -= 1;
@@ -105,7 +105,7 @@ public class Solution {
 					break;
 				}
 				
-				// 2. °¢ »ç¿ëÀÚº° ÃæÀü °¡´É È®ÀÎ
+				// 2. ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 				for(int i = 1; i < 10; i++) {
 					if((map[ua.x][ua.y] & (1 << i)) != 0) {
 						range[i] = true;
@@ -125,7 +125,7 @@ public class Solution {
 					}
 				}
 				
-				// 3. ÃæÀü ¿ë·® ÆÄ¾Ç
+				// 3. ï¿½ï¿½ï¿½ï¿½ ï¿½ë·® ï¿½Ä¾ï¿½
 				if(!same) {
 					int amax = 0;
 					int bmax = 0;

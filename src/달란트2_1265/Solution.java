@@ -1,4 +1,4 @@
-package �޶�Ʈ2_1265;
+package 달란트2_1265;
 
 import java.io.BufferedReader;
 import java.io.IOException;

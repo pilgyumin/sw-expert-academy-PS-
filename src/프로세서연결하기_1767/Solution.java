@@ -1,4 +1,4 @@
-package ÇÁ·Î¼¼¼­¿¬°áÇÏ±â_1767;
+package í”„ë¡œì„¸ì„œì—°ê²°í•˜ê¸°_1767;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -51,7 +51,7 @@ public class Solution {
         int x = ar.get(aridx).x;
         int y = ar.get(aridx).y;
          
-        // 0 : À§, 1 : ¾Æ·¡, 2 : ¿ÞÂÊ, 3 : ¿À¸¥ÂÊ
+        // 0 : ï¿½ï¿½, 1 : ï¿½Æ·ï¿½, 2 : ï¿½ï¿½ï¿½ï¿½, 3 : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         for(int i = 0; i < 4; i++) {
             int cal = 0;
             boolean np = false;

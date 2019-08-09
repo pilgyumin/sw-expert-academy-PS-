@@ -1,4 +1,4 @@
-package Æ¯ÀÌÇÑÀÚ¼®_4013;
+package íŠ¹ì´í•œìì„_4013;
 
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -23,7 +23,7 @@ public class Solution {
                     }
                 }
             }
-            // ½Ã°è ¹æÇâ È¸Àü
+            // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
             if(b == 1) {
                 if(check[0]) {
                     int num = dq1.remove(7);
@@ -44,7 +44,7 @@ public class Solution {
                     dq1.addFirst(num);
                 }
             }
-            // ¹İ½Ã°è ¹æÇâ È¸Àü
+            // ï¿½İ½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
             else {
                 if(check[0]) {
                     int num = dq1.removeFirst();
@@ -67,7 +67,7 @@ public class Solution {
             }
             break;
         case 2:
-            // ½Ã°è ¹æÇâ È¸Àü
+            // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
             if(dq1.get(2) != dq2.get(6)) {
                 check[0] = true;
             }

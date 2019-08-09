@@ -1,4 +1,4 @@
-package ¼ö¿µÀå_1952;
+package ìˆ˜ì˜ì¥_1952;
 
 import java.util.Scanner;
 import java.util.Stack;

@@ -1,4 +1,4 @@
-package »ï»ïÆ®¸®ÇÃ°ÔÀÓ_Codebattle47_1;
+package ì‚¼ì‚¼íŠ¸ë¦¬í”Œê²Œì„_Codebattle47_1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

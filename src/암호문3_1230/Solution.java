@@ -1,4 +1,4 @@
-package ¾ÏÈ£¹®3_1230;
+package ì•”í˜¸ë¬¸3_1230;
 
 import java.util.LinkedList;
 import java.util.Scanner;

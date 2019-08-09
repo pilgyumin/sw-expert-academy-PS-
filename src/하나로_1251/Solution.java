@@ -1,4 +1,4 @@
-package ÇÏ³ª·Î_1251;
+package í•˜ë‚˜ë¡œ_1251;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

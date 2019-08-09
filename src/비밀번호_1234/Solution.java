@@ -1,4 +1,4 @@
-package ��й�ȣ_1234;
+package 비밀번호_1234;
 
 import java.io.BufferedReader;
 import java.io.IOException;

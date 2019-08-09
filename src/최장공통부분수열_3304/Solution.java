@@ -1,4 +1,4 @@
-package ÃÖÀå°øÅëºÎºĞ¼ö¿­_3304;
+package ìµœì¥ê³µí†µë¶€ë¶„ìˆ˜ì—´_3304;
 
 import java.io.BufferedReader;
 import java.io.IOException;

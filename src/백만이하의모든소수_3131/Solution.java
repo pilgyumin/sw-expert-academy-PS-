@@ -1,4 +1,4 @@
-package ¹é¸¸ÀÌÇÏÀÇ¸ğµç¼Ò¼ö_3131;
+package ë°±ë§Œì´í•˜ì˜ëª¨ë“ ì†Œìˆ˜_3131;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package È¨¹æ¹ü¼­ºñ½º_2117;
+package í™ˆë°©ë²”ì„œë¹„ìŠ¤_2117;
 
 import java.util.ArrayList;
 import java.util.Scanner;

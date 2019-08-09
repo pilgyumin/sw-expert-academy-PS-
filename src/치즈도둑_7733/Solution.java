@@ -1,4 +1,4 @@
-package ġ���_7733;
+package 치즈도둑_7733;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

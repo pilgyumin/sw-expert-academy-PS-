@@ -1,4 +1,4 @@
-package ÇÉº¼°ÔÀÓ_5650;
+package í•€ë³¼ê²Œìž„_5650;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -141,7 +141,7 @@ public class Solution {
 					continue;
 				}
 
-				//¿úÈ¦
+				//ï¿½ï¿½È¦
 				if(wormmap[bx][by+1]) {
 					Wormhole wh = null;
 					for(int i = 0; i < wm.size(); i++) {
@@ -153,12 +153,12 @@ public class Solution {
 					qu.add(new Ball(wh.x,wh.y,bc,bd));
 					continue;
 				}
-				//º® ºÎµú
+				//ï¿½ï¿½ ï¿½Îµï¿½
 				if((map[bx][by+1] & (1 << bd)) != 0 && !wormmap[bx][by+1]) {
 					qu.add(new Ball(bx,by+1,bc+1,(bd+2) % 4));
 					continue;
 				}
-				// ±¼Àý ºÎµú
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½
 				if(map[bx][by+1] > 0 && map[bx][by+1] < 100 &&(map[bx][by+1] & (1 << bd)) == 0 && !wormmap[bx][by+1]) {
 					int idx = 0;
 					for(int i = 0; i < 4; i++) {
@@ -192,7 +192,7 @@ public class Solution {
 					continue;
 				}
 
-				//¿úÈ¦
+				//ï¿½ï¿½È¦
 				if(wormmap[bx+1][by]) {
 					Wormhole wh = null;
 					for(int i = 0; i < wm.size(); i++) {
@@ -204,12 +204,12 @@ public class Solution {
 					qu.add(new Ball(wh.x,wh.y,bc,bd));
 					continue;
 				}
-				//º® ºÎµú
+				//ï¿½ï¿½ ï¿½Îµï¿½
 				if((map[bx+1][by] & (1 << 2)) != 0 && !wormmap[bx+1][by]) {
 					qu.add(new Ball(bx+1,by,bc+1,(bd+2) % 4));
 					continue;
 				}
-				// ±¼Àý ºÎµú
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½
 				if(map[bx+1][by] > 0 && map[bx+1][by] < 100 && (map[bx+1][by] & (1 << 2)) == 0 && !wormmap[bx+1][by]) {
 					int idx = 0;
 					for(int i = 0; i < 4; i++) {
@@ -244,7 +244,7 @@ public class Solution {
 					continue;
 				}
 
-				//¿úÈ¦
+				//ï¿½ï¿½È¦
 				if(wormmap[bx][by-1]) {
 					Wormhole wh = null;
 					for(int i = 0; i < wm.size(); i++) {
@@ -256,12 +256,12 @@ public class Solution {
 					qu.add(new Ball(wh.x,wh.y,bc,bd));
 					continue;
 				}
-				//º® ºÎµú
+				//ï¿½ï¿½ ï¿½Îµï¿½
 				if((map[bx][by-1] & (1 << bd)) != 0 && !wormmap[bx][by-1]) {
 					qu.add(new Ball(bx,by-1,bc+1,(bd+2) % 4));
 					continue;
 				}
-				// ±¼Àý ºÎµú
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½Îµï¿½
 				if(map[bx][by-1] > 0 && map[bx][by-1] < 100 && (map[bx][by-1] & (1 << bd)) == 0 && !wormmap[bx][by-1]) {
 					int idx = 0;
 					for(int i = 0; i < 4; i++) {

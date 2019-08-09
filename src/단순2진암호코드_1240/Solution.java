@@ -1,4 +1,4 @@
-package ´Ü¼ø2Áø¾ÏÈ£ÄÚµå_1240;
+package ë‹¨ìˆœ2ì§„ì•”í˜¸ì½”ë“œ_1240;
 
 import java.util.HashMap;
 import java.util.Scanner;

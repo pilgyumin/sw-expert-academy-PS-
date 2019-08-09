@@ -1,4 +1,4 @@
-package Àå¾Ö¹°°æÁÖ³­ÀÌµµ_6730;
+package ì¥ì• ë¬¼ê²½ì£¼ë‚œì´ë„_6730;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

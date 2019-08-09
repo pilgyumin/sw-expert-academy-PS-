@@ -1,4 +1,4 @@
-package �ִ�κй迭_3819;
+package 최대부분배열_3819;
 
 import java.io.BufferedReader;
 import java.io.IOException;

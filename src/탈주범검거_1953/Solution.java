@@ -1,4 +1,4 @@
-package Ż�ֹ��˰�_1953;
+package 탈주범검거_1953;
 
 import java.util.Scanner;
 

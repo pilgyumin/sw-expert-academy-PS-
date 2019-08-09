@@ -1,4 +1,4 @@
-package ±Ô¿µÀÌ¿ÍÀÎ¿µÀÌÀÇÄ«µå°ÔÀÓ_Battle48_1;
+package ê·œì˜ì´ì™€ì¸ì˜ì´ì˜ì¹´ë“œê²Œì„_Battle48_1;
 
 import java.util.Scanner;
 

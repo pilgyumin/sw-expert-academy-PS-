@@ -1,4 +1,4 @@
-package �ḹ�̽ɱ�_4301;
+package 콩많이심기_4301;
 
 import java.util.Scanner;
 
